@@ -1,8 +1,44 @@
+import { ModeToggle } from "@/components/ModeToggle";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
+      <header className="w-full flex-col gap-2 items-center justify-center p-8 ">
+        <nav>
+          <ul className="flex gap-4 items-center justify-center">
+            
+            
+            <Link href={'/'}>
+              
+                Examples
+              
+            </Link>
+            <Link href={'/'}>
+              
+                Blog
+              
+            </Link>
+            <Link href={'/'}>
+              
+            
+               <ModeToggle />
+              
+            </Link>
+              </ul>
+        </nav>
+        <h1 className="text-4xl font-bold">
+          <span className="text-foreground">Next.js</span> App Directory
+        </h1>
+        <p className="text-sm text-center sm:text-base">
+          Get started by editing{" "}
+          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+            app/page.tsx
+          </code>
+          .
+        </p>
+      </header>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
