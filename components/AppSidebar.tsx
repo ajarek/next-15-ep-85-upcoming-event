@@ -1,23 +1,21 @@
-import {  Plus} from 'lucide-react'
+'use client'
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarFooter,
 } from '@/components/ui/sidebar'
-import { Button } from './ui/button'
+import { Plus } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { CalendarLocal } from './CalendarLocal'
-
-
+import { ModeToggle } from './ModeToggle'
+import AddEvent from './AddEvent'
+import { useActionStore } from '@/store/actionStore'
+import { Button } from './ui/button'
 
 const AppSidebar = () => {
+  const { isOpen, setIsOpen } = useActionStore()
   return (
     <Sidebar>
       <SidebarHeader>
@@ -35,15 +33,22 @@ const AppSidebar = () => {
               <p className='text-sm text-gray-400'>Projektant interfejsu</p>
             </div>
           </div>
-          <Button size={'icon'}>
+          <Button
+            size={'icon'}
+            onClickCapture={() => setIsOpen(true)}
+          >
             <Plus />
           </Button>
+          {isOpen && <AddEvent />}
         </div>
       </SidebarHeader>
 
       <SidebarContent>
-      <CalendarLocal />
+        <CalendarLocal />
       </SidebarContent>
+      <SidebarFooter className='py-4'>
+        <ModeToggle />
+      </SidebarFooter>
     </Sidebar>
   )
 }
