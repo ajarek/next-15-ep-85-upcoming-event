@@ -75,6 +75,7 @@ export function CalendarForm() {
     addItemToEvent(item)
     setIsOpen(false)
     router.push(`/?date=${data.dateTime.date.toLocaleDateString()}`)
+    
   }
 
   return (
@@ -88,7 +89,7 @@ export function CalendarForm() {
           name='dateTime'
           render={({ field }) => (
             <FormItem className='flex flex-col'>
-              <FormLabel>Date and Time</FormLabel>
+              <FormLabel>Wybierz datę</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -98,12 +99,12 @@ export function CalendarForm() {
                         'w-[240px] pl-3 text-left font-normal',
                         !field.value && 'text-muted-foreground'
                       )}
-                      aria-label='Select date'
+                      aria-label='Wybierz datę'
                     >
                       {field.value?.date ? (
                         format(field.value.date, 'PPP')
                       ) : (
-                        <span>select a date</span>
+                        <span>wybierz datę</span>
                       )}
                       <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
                     </Button>
@@ -126,20 +127,20 @@ export function CalendarForm() {
 
               <FormControl>
                 <div className='w-full flex items-center justify-between bg-background rounded-sm'>
-                  <FormLabel className='pl-2'>time On</FormLabel>
+                  <FormLabel className='pl-2'>Godzina rozpoczęcia</FormLabel>
                   <Input
                     type='time'
                     value={field.value?.timeOn || ''}
                     onChange={(e) =>
                       field.onChange({ ...field.value, timeOn: e.target.value })
                     }
-                    className='w-[95px] '
+                    className='w-[95px]'
                   />
                 </div>
               </FormControl>
               <FormControl>
                 <div className='w-full flex items-center justify-between bg-background rounded-sm '>
-                  <FormLabel className='pl-2'>time Off</FormLabel>
+                  <FormLabel className='pl-2'>Godzina zakończenia</FormLabel>
                   <Input
                     type='time'
                     value={field.value?.timeOff || ''}
@@ -155,7 +156,6 @@ export function CalendarForm() {
               </FormControl>
               <FormControl>
                 <div className='w-full flex items-center justify-between gap-2 bg-background rounded-sm '>
-                  <FormLabel className='pl-2'>Event</FormLabel>
                   <Input
                     type='text'
                     value={field.value?.event || ''}
@@ -165,13 +165,14 @@ export function CalendarForm() {
                         event: e.target.value,
                       })
                     }
-                    className='w-full'
+                    className='w-full '
+                    placeholder='Wpisz nazwę wydarzenia'
                   />
                 </div>
               </FormControl>
               <FormControl>
                 <div className='w-full flex items-center justify-between gap-2 '>
-                  <FormLabel className='text-sm'>Type</FormLabel>
+                  <FormLabel className='text-sm'>Typ wydarzenia</FormLabel>
                   <Select
                     onValueChange={(e) =>
                       field.onChange({
@@ -188,34 +189,34 @@ export function CalendarForm() {
                     </FormControl>
                     <SelectContent>
                       <SelectItem
-                        className='bg-slate-500'
-                        value='Project'
+                        className='bg-orange-500'
+                        value='Projekt'
                       >
-                        Project
+                        Projekt
                       </SelectItem>
                       <SelectItem
                         className='bg-blue-500'
-                        value='Meeting'
+                        value='Spotkanie'
                       >
-                        Meeting
+                        Spotkanie
                       </SelectItem>
                       <SelectItem
                         className='bg-red-500'
-                        value='Education'
+                        value='Edukacja'
                       >
-                        Education
+                        Edukacja
                       </SelectItem>
                       <SelectItem
                         className='bg-yellow-500'
-                        value='Trip'
+                        value='Wycieczka'
                       >
-                        Trip
+                        Wycieczka
                       </SelectItem>
                       <SelectItem
                         className='bg-green-500'
-                        value='Other'
+                        value='Inny'
                       >
-                        Other
+                       Inny
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -229,8 +230,9 @@ export function CalendarForm() {
         <Button
           type='submit'
           aria-label='Send'
+          className='w-full text-xl '
         >
-          Send
+          Dodaj Wydarzenie
         </Button>
       </form>
     </Form>

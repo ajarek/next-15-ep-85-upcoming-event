@@ -4,13 +4,16 @@ import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { getDateWeek } from '@/lib/getDateWeek'
 import type { Item } from '@/store/eventsStore'
+import { useEventsStore } from '@/store/eventsStore'
+
 
 export function Timetable() {
+  
   const [weekEvents, setWeekEvents] = useState<{ [key: string]: Item[] }>({})
   const [currentWeek, setCurrentWeek] = useState(0)
   const [numberWeek, setNumberWeek] = useState(getDateWeek(new Date()))
   const [numberMonth, setNumberMonth] = useState(new Date().getMonth() + 1)
-  
+  const { removeItemFromEvent } = useEventsStore()
   useEffect(() => {
     const storedEvents =
       JSON.parse(localStorage.getItem('EventStore') || '{}').state?.items || []
@@ -18,7 +21,7 @@ export function Timetable() {
     const startOfWeek = new Date(
       today.setDate(today.getDate() - today.getDay() + 1 + currentWeek * 7)
     )
-    
+
     // Aktualizacja miesiąca na podstawie początku tygodnia
     setNumberMonth(startOfWeek.getMonth() + 1)
 
@@ -61,7 +64,9 @@ export function Timetable() {
     setCurrentWeek(currentWeek - 1)
     const today = new Date()
     const prevWeekDate = new Date(
-      today.setDate(today.getDate() - today.getDay() + 1 + (currentWeek - 1) * 7)
+      today.setDate(
+        today.getDate() - today.getDay() + 1 + (currentWeek - 1) * 7
+      )
     )
     setNumberWeek(numberWeek > 1 ? numberWeek - 1 : 52)
     setNumberMonth(prevWeekDate.getMonth() + 1)
@@ -71,7 +76,9 @@ export function Timetable() {
     setCurrentWeek(currentWeek + 1)
     const today = new Date()
     const nextWeekDate = new Date(
-      today.setDate(today.getDate() - today.getDay() + 1 + (currentWeek + 1) * 7)
+      today.setDate(
+        today.getDate() - today.getDay() + 1 + (currentWeek + 1) * 7
+      )
     )
     setNumberWeek(numberWeek < 52 ? numberWeek + 1 : 1)
     setNumberMonth(nextWeekDate.getMonth() + 1)
@@ -79,8 +86,18 @@ export function Timetable() {
 
   const getMonthName = (monthNumber: number): string => {
     const monthNames = [
-      'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
-      'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'
+      'Styczeń',
+      'Luty',
+      'Marzec',
+      'Kwiecień',
+      'Maj',
+      'Czerwiec',
+      'Lipiec',
+      'Sierpień',
+      'Wrzesień',
+      'Październik',
+      'Listopad',
+      'Grudzień',
     ]
     return monthNames[monthNumber - 1]
   }
@@ -92,9 +109,11 @@ export function Timetable() {
           onClick={goToPreviousWeek}
           aria-label='Previous week'
         >
-         Poprzedni tydzień
+          Poprzedni tydzień
         </Button>
-        <h2 className='font-bold'>Tydzień: {numberWeek} Miesiąc: {getMonthName(numberMonth)}/2025</h2>
+        <h2 className='font-bold'>
+          Tydzień: {numberWeek} Miesiąc: {getMonthName(numberMonth)}/2025
+        </h2>
         <Button
           onClick={goToNextWeek}
           aria-label='Next week'
@@ -123,7 +142,7 @@ export function Timetable() {
                       ? 'bg-green-500'
                       : item.type === 'Education'
                       ? 'bg-red-500'
-                      : 'bg-gray-500'
+                      : 'bg-orange-500'
                   }`}
                 >
                   <div className='font-semibold'>{item.event}</div>
@@ -131,6 +150,16 @@ export function Timetable() {
                     {item.timeOn} - {item.timeOff}
                   </div>
                   <div>{item.type}</div>
+                  <Button
+                    onClick={() => {
+                      removeItemFromEvent(item.id);
+                      
+                    }}
+                    size={'icon'}
+                    className='text-xl bg-transparent self-end'
+                  >
+                    ❌
+                  </Button>
                 </div>
               ))}
           </div>
