@@ -9,7 +9,7 @@ export function CalendarLocal() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   const handleDateSelect = React.useCallback((date: Date) => {
     setDate(date)
-    router.push(`/?date=${date.toLocaleDateString()}`)
+    router.push(`/calendar-day/${date.toLocaleDateString()}`)
   }, [router])
   return (
     <>

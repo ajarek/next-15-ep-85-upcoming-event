@@ -13,6 +13,7 @@ import { Calendar } from '@/components/ui/calendar'
 import {
   Popover,
   PopoverContent,
+  
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Input } from '@/components/ui/input'
@@ -74,7 +75,7 @@ export function CalendarForm() {
     }
     addItemToEvent(item)
     setIsOpen(false)
-    router.push(`/?date=${data.dateTime.date.toLocaleDateString()}`)
+    router.push(`/events}`)
     
   }
 

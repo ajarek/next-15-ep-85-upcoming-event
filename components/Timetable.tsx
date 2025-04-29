@@ -134,13 +134,13 @@ export function Timetable() {
                 <div
                   key={item.id}
                   className={`flex flex-col p-2 mb-2 rounded ${
-                    item.type === 'Meeting'
+                    item.type === 'Spotkanie'
                       ? 'bg-blue-500'
-                      : item.type === 'Trip'
+                      : item.type === 'Wycieczka'
                       ? 'bg-yellow-500'
-                      : item.type === 'Other'
+                      : item.type === 'Inne'
                       ? 'bg-green-500'
-                      : item.type === 'Education'
+                      : item.type === 'Edukacja'
                       ? 'bg-red-500'
                       : 'bg-orange-500'
                   }`}
@@ -156,7 +156,7 @@ export function Timetable() {
                       
                     }}
                     size={'icon'}
-                    className='text-xl bg-transparent self-end'
+                    className='text-sm w-6 h-6 bg-white rounded-full border border-red-500 self-end'
                   >
                     ❌
                   </Button>
