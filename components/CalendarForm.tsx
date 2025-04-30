@@ -13,7 +13,6 @@ import { Calendar } from '@/components/ui/calendar'
 import {
   Popover,
   PopoverContent,
-  
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Input } from '@/components/ui/input'
@@ -73,10 +72,14 @@ export function CalendarForm() {
       event: data.dateTime.event,
       type: data.dateTime.type,
     }
-    addItemToEvent(item)
-    setIsOpen(false)
-    router.push(`/events}`)
-    
+    try {
+      addItemToEvent(item)
+      setIsOpen(false)
+    } catch {
+      router.push('/not-found')
+    } finally {
+      router.push(`/`)
+    }
   }
 
   return (
@@ -217,7 +220,7 @@ export function CalendarForm() {
                         className='bg-green-500'
                         value='Inny'
                       >
-                       Inny
+                        Inny
                       </SelectItem>
                     </SelectContent>
                   </Select>

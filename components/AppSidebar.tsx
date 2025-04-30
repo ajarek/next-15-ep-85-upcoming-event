@@ -39,6 +39,7 @@ const AppSidebar = () => {
           <Button
             size={'icon'}
             onClickCapture={() => setIsOpen(true)}
+            className='bg-primary text-primary-foreground flex items-center justify-center hover:bg-green-500 hover:text-white transition-all delay-200'
           >
             <Plus />
           </Button>

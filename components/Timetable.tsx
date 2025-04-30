@@ -5,10 +5,11 @@ import { Button } from './ui/button'
 import { getDateWeek } from '@/lib/getDateWeek'
 import type { Item } from '@/store/eventsStore'
 import { useEventsStore } from '@/store/eventsStore'
-
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export function Timetable() {
-  
+  const router = useRouter()
   const [weekEvents, setWeekEvents] = useState<{ [key: string]: Item[] }>({})
   const [currentWeek, setCurrentWeek] = useState(0)
   const [numberWeek, setNumberWeek] = useState(getDateWeek(new Date()))
@@ -108,8 +109,9 @@ export function Timetable() {
         <Button
           onClick={goToPreviousWeek}
           aria-label='Previous week'
+          size={'icon'}
         >
-          Poprzedni tydzień
+          <ChevronLeft size={32}/>
         </Button>
         <h2 className='font-bold'>
           Tydzień: {numberWeek} Miesiąc: {getMonthName(numberMonth)}/2025
@@ -117,8 +119,9 @@ export function Timetable() {
         <Button
           onClick={goToNextWeek}
           aria-label='Next week'
+          size={'icon'}
         >
-          Przyszły tydzień
+         <ChevronRight size={32} />
         </Button>
       </div>
       <div className='grid grid-cols-7 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4'>
@@ -153,7 +156,7 @@ export function Timetable() {
                   <Button
                     onClick={() => {
                       removeItemFromEvent(item.id);
-                      
+                      router.push(`/`);
                     }}
                     size={'icon'}
                     className='text-sm w-6 h-6 bg-white rounded-full border border-red-500 self-end'
