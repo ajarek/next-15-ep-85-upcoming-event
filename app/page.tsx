@@ -1,7 +1,10 @@
 import MotionImage from '@/components/MotionImage'
 import Link from 'next/link'
 
-export default function Home() {
+
+export default async function Home() {
+  
+
   return (
     <div className='relative  min-h-screen w-full flex flex-col items-center justify-start    font-[family-name:var(--font-geist-sans)] '>
       <MotionImage
@@ -25,7 +28,7 @@ export default function Home() {
             <div className='mt-4 flex justify-center gap-4 sm:mt-6'>
               <Link
                 className='inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-2 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700'
-                href='/'
+                href='/login'
               >
                 Zaloguj się
               </Link>

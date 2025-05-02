@@ -2,13 +2,13 @@
 
 import React, { use } from 'react'
 import { Item, useEventsStore } from '@/store/eventsStore'
-import { Button } from '@/components/ui/button'
-import { useRouter } from 'next/navigation'
+import ButtonRemoveItem from '@/components/ButtonRemoveItem'
+
 
 const CalendarDayPage = ({ params }: { params: Promise<{ day: string }> }) => {
-  const router = useRouter()
+ 
   const { day } = use(params)
-  const { items, removeItemFromEvent } = useEventsStore()
+  const { items } = useEventsStore()
   const lengthEvents = items.filter((item) => item.date === day).length
   if (lengthEvents === 0)
     return (
@@ -57,17 +57,7 @@ const CalendarDayPage = ({ params }: { params: Promise<{ day: string }> }) => {
               <p>
                 <span className='text-gray-300 text-sm'>typ:</span> {item.type}
               </p>
-              <Button
-                size='icon'
-                onClick={() => {
-                  removeItemFromEvent(item.id)
-                  router.push(`/`)
-                }}
-                aria-label='Usuń wydarzenie'
-                className='text-sm w-6 h-6 bg-white rounded-full border border-red-500 self-end'
-              >
-                ❌
-              </Button>
+              <ButtonRemoveItem id={item.id} />
             </div>
           ))}
       </div>
