@@ -1,8 +1,11 @@
 import MotionImage from '@/components/MotionImage'
 import Link from 'next/link'
+import { auth } from '@/app/api/auth/auth'
+
 
 
 export default async function Home() {
+  const session = await auth()
   
 
   return (
@@ -26,12 +29,14 @@ export default async function Home() {
             </p>
 
             <div className='mt-4 flex justify-center gap-4 sm:mt-6'>
+              {!session &&
               <Link
                 className='inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-2 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700'
                 href='/login'
               >
                 Zaloguj się
               </Link>
+             }
             </div>
           </div>
         </div>

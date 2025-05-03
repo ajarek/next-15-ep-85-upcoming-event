@@ -7,6 +7,7 @@ import type { Item } from '@/store/eventsStore'
 import { useEventsStore } from '@/store/eventsStore'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export function Timetable() {
   const router = useRouter()
@@ -134,7 +135,8 @@ export function Timetable() {
             {dayEvents
               .sort((a: Item, b: Item) => a.timeOn.localeCompare(b.timeOn))
               .map((item: Item) => (
-                <div
+                <Link 
+                  href={`/calendar-day/${item.id}`}
                   key={item.id}
                   className={`flex flex-col p-2 mb-2 rounded ${
                     item.type === 'Spotkanie'
@@ -163,7 +165,7 @@ export function Timetable() {
                   >
                     ❌
                   </Button>
-                </div>
+                </Link>
               ))}
           </div>
         ))}

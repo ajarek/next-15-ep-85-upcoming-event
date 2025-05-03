@@ -21,7 +21,7 @@ const AppSidebar =async () => {
   return (
     <Sidebar className='px-2'>
       <SidebarHeader>
-      <HeaderSidebar userImage={session?.user?.image||''} userName={session?.user?.name  ||''}/>
+      <HeaderSidebar userImage={session?.user?.image||''} userName={session?.user?.name  ||''} session={session?true:false}/>
       </SidebarHeader>
 
       <SidebarMenu>

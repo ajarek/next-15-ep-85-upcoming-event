@@ -40,8 +40,8 @@ const RegisterForm = () => {
   return (
     <div className='w-full max-w-[375px] flex flex-col items-start  gap-4 p-4 '>
       <div className=' flex flex-col items-start gap-2 p-6 '>
-        <h1 className='text-2xl '>Create an account</h1>
-        <p>Enter your details below</p>
+        <h1 className='text-2xl '>Utwórz nowe konto</h1>
+        <p>Poniżej wprowadź swoje dane </p>
       </div>
       <form
         className='w-[375px]  flex flex-col gap-4 p-6  '
@@ -49,21 +49,21 @@ const RegisterForm = () => {
       >
         <Input
           type='text'
-          placeholder='Name'
+          placeholder='Imię'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className='rounded-none border-none border-b-2 border-black bg-transparent focus:outline-none focus:ring-0 focus:border-black'
         />
         <Input
           type='email'
-          placeholder='Email or Phone Number'
+          placeholder='Email '
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className='rounded-none border-none border-b-2 border-black bg-transparent focus:outline-none focus:ring-0 focus:border-black'
         />
         <Input
           type='password'
-          placeholder='Password'
+          placeholder='Hasło'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className='rounded-none border-none border-b-2 border-black bg-transparent focus:outline-none focus:ring-0 focus:border-black'
@@ -74,16 +74,16 @@ const RegisterForm = () => {
           type='submit'
           aria-label='Zarejestruj się'
         >
-          Create Account
+          Utwórz Konto
         </Button>
         <Link
           href='/login'
           className='space-x-2 '
           aria-label='Already have account?'
         >
-          Already have account?{' '}
-          <b className=' border-b-2 hover:border-blue-500 transition-all delay-200'>
-            Log in
+          Masz już konto?
+          <b className=' border-b-2 hover:border-blue-500 transition-all delay-200 ml-2'>
+            Zaloguj się
           </b>
         </Link>
       </form>
