@@ -10,7 +10,6 @@ import {
 import { KeyRound } from 'lucide-react'
 import 'next-auth'
 
-
 const Logout = async ({ session }: { session: Session | null }) => {
   return (
     <div className=' flex items-center gap-2 '>

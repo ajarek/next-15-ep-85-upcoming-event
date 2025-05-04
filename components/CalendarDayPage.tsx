@@ -18,9 +18,9 @@ const CalendarDayPage = ({ day }: { day:string }) => {
       </div>
     )
   return (
-    <div className='flex flex-col  items-start justify-top h-screen p-16 gap-16'>
+    <div className='flex flex-col  items-start justify-top h-screen px-16 gap-16'>
       <h1 className='text-2xl font-bold'>Data: {day}</h1>
-      <div className='flex flex-wrap gap-4'>
+      <div className='flex flex-wrap gap-4 p-4'>
         {items
           .filter((item) => item.date === day)
           .sort((a: Item, b: Item) => a.timeOn.localeCompare(b.timeOn))

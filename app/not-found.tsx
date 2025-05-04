@@ -10,10 +10,10 @@ const NotFoundPage = () => {
     <div className='w-full min-h-[calc(100vh-32px)] flex flex-col items-center justify-center gap-4 p-2'>
      
       <h1 className='text-center text-3xl font-semibold tracking-widest '>
-        404 Not Found
+        404 Nie znaleziono strony
       </h1>
       <p className='text-center'>
-        Your visited page not found. You may go home page.
+      Twoja odwiedzona strona nie została znaleziona. Możesz przejść na stronę główną.
       </p>
       <div className=''>
         <Button
@@ -23,7 +23,7 @@ const NotFoundPage = () => {
           aria-label='Back to home page'
           className='w-full bg-[#DB4444] text-white hover:bg-[#E07575]/90 rounded-[2px]'
         >
-          Back to home page
+          Powrót do strony głównej
         </Button>
       </div>
     </div>

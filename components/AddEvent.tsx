@@ -19,7 +19,7 @@ const AddEvent = () => {
         >
           ❌
         </Button>
-        
+
         <CalendarForm />
       </div>
     </div>

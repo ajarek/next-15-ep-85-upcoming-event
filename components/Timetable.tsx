@@ -112,7 +112,7 @@ export function Timetable() {
           aria-label='Previous week'
           size={'icon'}
         >
-          <ChevronLeft size={32}/>
+          <ChevronLeft size={32} />
         </Button>
         <h2 className='font-bold'>
           Tydzień: {numberWeek} Miesiąc: {getMonthName(numberMonth)}/2025
@@ -122,7 +122,7 @@ export function Timetable() {
           aria-label='Next week'
           size={'icon'}
         >
-         <ChevronRight size={32} />
+          <ChevronRight size={32} />
         </Button>
       </div>
       <div className='grid grid-cols-7 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4'>
@@ -135,8 +135,8 @@ export function Timetable() {
             {dayEvents
               .sort((a: Item, b: Item) => a.timeOn.localeCompare(b.timeOn))
               .map((item: Item) => (
-                <Link 
-                  href={`/calendar-day/${item.id}`}
+                <Link
+                  href={`/calendar-day/${item.date}`}
                   key={item.id}
                   className={`flex flex-col p-2 mb-2 rounded ${
                     item.type === 'Spotkanie'
@@ -157,8 +157,8 @@ export function Timetable() {
                   <div>{item.type}</div>
                   <Button
                     onClick={() => {
-                      removeItemFromEvent(item.id);
-                      router.push(`/`);
+                      removeItemFromEvent(item.id)
+                      router.push(`/`)
                     }}
                     size={'icon'}
                     className='text-sm w-6 h-6 bg-white rounded-full border border-red-500 self-end'
